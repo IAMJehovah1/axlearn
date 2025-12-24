@@ -51,6 +51,21 @@ def main(**kwargs):
     except (ImportError, ModuleNotFoundError):
         # GCP extras not installed.
         pass
+    
+    # Register profile command (always available)
+    try:
+        def add_profile_cmd(*, parent):
+            """Add profile command to the parent command group."""
+            parent.add_cmd_from_module(
+                "profile",
+                module="axlearn.cli.profile",
+                help="Manage user profile and preferences"
+            )
+        
+        register_root_command_group(add_profile_cmd, name="profile")
+    except (ImportError, ModuleNotFoundError):
+        # Profile module not available
+        pass
 
     base_main(**kwargs)
 
