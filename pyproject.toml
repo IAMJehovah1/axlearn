@@ -162,6 +162,7 @@ orbax = [
 ]
 # Audio dependencies.
 audio = [
+    "axlearn[core]",
     "levenshtein==0.25.1",
 ]
 
