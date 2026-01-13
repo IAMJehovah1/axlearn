@@ -34,10 +34,10 @@ core = [
     "protobuf>=4,<5",
     "tensorboard-plugin-profile==2.20.4",
     # This has both x86 and arm64 wheels. Underneath the hood it uses tensorflow-macos since 2.13.
-    "tensorflow==2.19.1.1",
+    "tensorflow==2.19.1",
     "tensorflow-datasets==4.9.9",
-    "tensorflow-io==0.37.2",  # for tensorflow-2.16. Note that 0.37.0 results in "pure virtual method called".
-    "tensorflow-metadata==1.18.0.dev0", # Otherwise Seqio will report no core for tfds
+    "tensorflow-io==0.37.1",  # for tensorflow-2.16. Note that 0.37.0 results in "pure virtual method called".
+    "tensorflow-metadata==1.17.2", # Otherwise Seqio will report no core for tfds
     "tensorflow_text==2.19.0", # implied by seqio, but also used directly for text processing
     "tensorstore>=0.1.63",  # used for supporting GDA checkpoints
     "toml",  # for config management
@@ -72,8 +72,8 @@ dev = [
     "sentencepiece != 0.1.92",
     "tqdm",  # test-only
     "timm==0.6.12",  # DiT Dependency test-only
-    "torch>=2.1.1",  # test-only
-    "torchvision==0.16.1",  # test-only
+    "torch>=2.2.0",  # test-only, updated for Python 3.12 compatibility
+    "torchvision>=0.17.0",  # test-only, updated for Python 3.12 compatibility
     "safetensors<=0.5.3",  # TODO: Remove once torch dependency is >=2.3.0
     "transformers==4.51.3",  # test-only
     "wandb",  # test-only
@@ -130,7 +130,7 @@ dataflow = [
 ]
 # GPU custom kernel dependency.
 gpu = [
-    "triton==2.1.0",
+    "triton>=2.2.0",  # Updated for Python 3.12 compatibility
     "jax[cuda12]==0.6.2",
     "nvidia-ml-py>=12.560.30",
     # pin nccl version, otherwise jax[cuda12] will pull latest version
